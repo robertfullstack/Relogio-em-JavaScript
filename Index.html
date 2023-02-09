@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes effect-one {
+            0% {
+                color: white;
+                background-color: black;
+            }
+
+            100% {
+                color: black;
+                background-color: white;
+            }
+        }
+
+        @keyframes effect-two {
+            0% {
+                color: black;
+                background-color: white;
+            }
+
+            100% {
+                color: white;
+                background-color: black;
+            }
+        }
+
+        body {
+            /* background-color: rgb(1, 68, 1); */
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: effect-two 0.9s infinite alternate-reverse;
+        }
+
+        #container-relogio:hover {
+            box-shadow: 5px 5px 10px green;
+        }
+
+        #container-relogio {
+            width: 500px;
+            height: 100px;
+            box-shadow: 5px 5px 10px black;
+            border-radius: 10px;
+            background-color: white;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: effect-one 0.9s infinite alternate-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container-relogio">
+        <script>
+            function horario() {
+                var dt = new Date()
+                var hora = dt.getHours()
+                var minutos = dt.getMinutes()
+                var segundos = dt.getSeconds()
+
+                if (segundos < 10) {
+                    segundos = "0" + segundos;
+                } if (minutos < 10) {
+                    minutos = "0" + minutos;
+                }
+                var horario = hora + ":" + minutos + ":" + segundos
+
+                document.getElementById("container-relogio").innerHTML = horario
+            }
+
+            setInterval(horario, 1000)
+        </script>
+    </div>
+</body>
+
+</html>
